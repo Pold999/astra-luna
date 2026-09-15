@@ -9,12 +9,18 @@ Keep routine interaction, implementation, commands, and testing in the Luna main
 
 ## Entry and Preconditions
 
-- Automatically apply to substantive execution where planning and verification justify the handoffs. Answer simple questions and lookups, and perform tiny, obvious edits directly. Explicit `$astra-luna` requests opt into the workflow even for a small task.
+- Automatically apply to substantive execution where planning and verification justify the handoffs. Answer simple questions and lookups, and keep fast-path tasks entirely in Luna. Explicit `$astra-luna` selects this skill but does not bypass the fast path; say `强制完整流程` only when a small task is intentionally being used to test or force orchestration.
 - Skip recursive orchestration only inside an actual collaboration child assigned an advisor or executor role. An existing desktop task resumed by cross-task messaging remains a main task; a handoff message is not evidence that it is a child agent.
 - Automatic invocation depends on the host's skill selector or an explicit standing instruction in AGENTS.md; neither is a guaranteed runtime hook. Do not change global instructions, configuration, or model defaults unless the user explicitly requests that configuration.
 - The intended main model is `gpt-5.6-luna`. A skill cannot change the main task model. If the main model differs or cannot be established, disclose that the Luna-main cost condition is unmet or unverified. Do not claim a complete cost-saving chain.
 - Require tools that can select `gpt-6-astra` with `high` reasoning and reuse its agent ID. If unavailable, report the exact limitation. Do not silently substitute models or invoke a CLI/API workaround.
 - Preserve project instructions, specialist skills, existing changes, and authorization boundaries. This skill is not authorization for publishing, credentials, payments, or destructive operations.
+
+## Fast Path: Luna Only
+
+Classify before spawning any advisor. Use Luna directly for lookups, explanations, one obvious file edits, typo or formatting changes, and small deterministic changes that need only an existing focused check. Practical signals are one target file, no architectural choice, no cross-module dependency, and roughly 30 or fewer changed lines.
+
+If the task is borderline, prefer the fast path when the acceptance check is mechanical and the failure cost is low. Report `direct Luna fast path` in the closeout. Only a clear cross-file design choice, uncertain debugging, research synthesis with execution, or a user request for `强制完整流程` should enter Astra planning.
 
 ## Host Tool Compatibility
 
@@ -22,7 +28,7 @@ Use tools actually exposed in the current task. The preferred API is the indepen
 
 ## Workflow
 
-1. Inspect only enough to locate entry points, relevant instructions, acceptance criteria, and checks. Give Astra a compact handoff with absolute paths and concrete uncertainties, without secrets or full logs.
+1. Inspect only enough to locate entry points, relevant instructions, acceptance criteria, and checks. Give Astra a compact handoff with absolute paths and concrete uncertainties, without secrets, full `AGENTS.md`, the full skill, or complete logs.
 2. Spawn one read-only Astra advisor using `gpt-6-astra`, `high`, and no inherited conversation. Ask for an actionable plan, risks, and cheapest acceptance checks. Retain its ID.
 3. Luna implements the plan, runs proportionate checks, and handles routine errors. If a patch misses context, reread the affected region and retry once minimally; do not replay stale broad patches.
 4. Send the actual changed paths, scoped diff, observed checks, and remaining uncertainties to the same advisor. It must inspect the actual result and return `PASS`, `FIX_REQUIRED`, or `UNVERIFIED`.

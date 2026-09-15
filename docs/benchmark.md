@@ -12,6 +12,8 @@ Do not compare this workflow to Luna-only and call that an Astra saving. Do not 
 4. Sum model token usage for all calls in each run. Report input, output, reasoning, cached input, total, and wall time when available.
 5. Record failures, retries, tool availability, and whether the result passed the same tests.
 
+Before measuring the full pipeline, run routing controls: a one-file mechanical edit should report `direct Luna fast path` and create no Astra advisor; a cross-file design task should create one reusable advisor. This prevents the benchmark harness from accidentally overriding the production fast path.
+
 ## Reporting guidance
 
 Use the protocol above to measure comparable pure-Astra and Astra-Luna runs on a substantive task. Report input, output, reasoning, cached input, total tokens, wall time, acceptance results, and any missing telemetry. Do not publish a fixed savings percentage from a single smoke task; use several representative tasks before making a generalized claim.

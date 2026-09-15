@@ -19,6 +19,8 @@ Using Astra for every shell command, file read, and edit is powerful but expensi
 
 It is a routing policy, not a magic model switch. Select Luna as the main task model; the skill cannot change that setting for you. Simple questions and tiny obvious edits stay direct. The workflow is intentionally bounded and reports when the host cannot provide the required model or collaboration tools.
 
+Small-task fast path: one-file edits, typo or formatting fixes, mechanical changes with a focused check, and other low-risk work stay entirely in Luna. `$astra-luna` selects the skill but does not force orchestration; write `强制完整流程` only when you intentionally want the full pipeline for a small task.
+
 ## What it promises
 
 - Compact handoffs instead of copying an entire conversation.
@@ -42,7 +44,7 @@ cp -R . ~/.codex/skills/astra-luna
 For automatic matching, add the routing rule from `AGENTS.md` to the instruction file used by your Codex environment. Then select `gpt-5.6-luna` as the main task model. You can also invoke it explicitly:
 
 ```text
-$astra-luna Fix the failing import path and run the focused tests.
+$astra-luna Trace the cross-module state bug, implement the fix, and run the regression suite.
 ```
 
 ## Scope
