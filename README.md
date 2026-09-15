@@ -29,7 +29,7 @@ It is a routing policy, not a magic model switch. Select Luna as the main task m
 
 ## Token savings
 
-The repository does not hard-code a marketing percentage. On the included tiny smoke task, Astra-Luna used at least `6.54x` the pure-Astra tokens because planning and verification dominated the work. That negative result is intentional evidence: this workflow is for substantial tasks where a long Luna execution loop can amortize Astra's decision calls, not four-test edits. See [`docs/benchmark.md`](docs/benchmark.md) for the raw token records and limitations.
+The repository does not hard-code a marketing percentage. Savings depend on task size, context length, cache behavior, and how much execution can stay on Luna. The benchmark protocol in [`docs/benchmark.md`](docs/benchmark.md) is included for transparent, reproducible measurement on substantial tasks.
 
 ## Install
 
